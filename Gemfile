@@ -6,6 +6,7 @@ gem 'unicorn'
 gem 'tiny_mce'
 gem 'will_paginate'
 gem 'paperclip'
+gem 'rmagick'
 
 group :development do
   gem 'capistrano'
