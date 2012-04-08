@@ -1,0 +1,12 @@
+<% fields_for "item[editable_images_attributes][]", editable_image do |image_form| %>  
+ <div class="photo_block">
+    <p>
+      <%= image_form.label :title, "Заголовок:" %>
+      <%= image_form.text_field :title, :index => nil %>
+    </p>
+    <%= image_tag(editable_image.image.url(:medium)) %>
+    <%= link_to_function "Удалить", "mark_for_destroy_id(this, 'photo_block')" %>
+    <%= image_form.hidden_field :id, :value => editable_image.id, :index => nil %>
+    <%= image_form.hidden_field :should_destroy, :value => "0", :index => nil, :class => "should_destroy" %>
+  </div>
+<% end %>

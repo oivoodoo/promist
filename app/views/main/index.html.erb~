@@ -1,0 +1,18 @@
+<% content_for :meta do %>
+  <%= render :partial => "templates/meta", :object => @page %>
+<% end %>
+
+<% content_for :promo_box do %>
+  <%= render :partial => 'main/templates/promo_box' %>
+<% end %>
+
+<div class="left_column" style="width: 310px !important">
+  <h2>Свежие статьи в библиотеке:</h2>
+  <% for library in @new_libraries %>
+    <%= link_to library.title, :controller => :main, :action => :libs, :id => library.id %><br />
+  <% end %>
+</div>
+<div class="right_column" style="width: 64% !important">
+  <h2>О нашей компании:</h2>
+  <%= @page.content %>
+</div>

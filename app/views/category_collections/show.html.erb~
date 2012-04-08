@@ -1,0 +1,6 @@
+<%= render :partial => "library_articles/templates/library", :object => @library_article %>
+<p>
+    <%= link_to "Редактировать", edit_library_article_path(@library_article) %> | 
+    <%= link_to "Удалить", @library_article, :confirm => "Вы действительно хотите удалить?", :method => :delete %> |
+    <%= link_to "Назад", library_articles_path %>
+</p>

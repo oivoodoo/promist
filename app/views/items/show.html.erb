@@ -1,0 +1,49 @@
+<% content_for :top_menu do %>
+  <%= render :partial => 'items/templates/top_menu' %>
+  <%= link_to 'Назад', :controller => :items, :action => :index %>
+<% end %>
+
+<table>
+  <thead>
+    <tr><td>Заголовок</td><td>Категория</td><td>Направление</td></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @item.title %></td>
+      <td><%= @item.category.title %></td>
+      <td><%= @item.category.category_collection.title %></td>
+      <td><%= link_to 'Редактировать', edit_item_path(@item) %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><%= @item.content %></td>
+    </tr>
+    <% i = 0 %>
+    <% for image in @item.images %>
+      <% if i == 2 then %>
+        <tr>
+      <% end %>
+      <td width="50%"><%= image_tag(image.image.url(:medium)) %></td>
+      <% if i == 2 then %>
+        </tr>
+        <% i = 0 %>
+      <% end %>
+      <% i += 1 %>
+    <% end %>
+    <% i = 0 %>
+    <% for image in @item.photos %>
+      <% if i == 2 then %>
+        <tr>
+      <% end %>
+      <td width="50%">
+        <p>иконка подкатегории товара:</p>
+        <%= image_tag(image.image.url(:medium)) %>
+      </td>
+      <% if i == 2 then %>
+        </tr>
+        <% i = 0 %>
+      <% end %>
+      <% i += 1 %>
+    <% end %>
+  </tbody>
+</table>
+

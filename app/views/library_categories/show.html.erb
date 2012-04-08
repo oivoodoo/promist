@@ -1,0 +1,11 @@
+<% content_for :top_menu do %>
+  <%= link_to "Добавить", new_library_category_path %><br />
+  <%= link_to 'Назад', library_categories_path %>
+<% end %>
+
+<table>
+  <tbody>
+    <%= render :partial => 'library_categories/templates/library', :object => @library_category %>
+  </tbody>
+</table>
+

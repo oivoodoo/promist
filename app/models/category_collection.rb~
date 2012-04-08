@@ -1,0 +1,35 @@
+class CategoryCollection < ActiveRecord::Base
+  has_many :categories
+
+  validates_presence_of :title
+  validates_associated :categories
+
+  after_update :save_categories
+
+  def self.find_categories
+    {
+      :advertisement => find(:first, :conditions => ['category_collection_type = ?', "advertisement"]).categories,
+      :seller => find(:first, :conditions => ['category_collection_type = ?', "seller"]).categories
+    }
+  end
+  
+  def self.get_by_type(type)
+    CategoryCollection.find(:all, :order => "position", :conditions => ['category_collection_type = ?', type])
+  end
+  
+  def editable_category=(category_attributes)
+    category_attributes.each do |attributes|
+      if attributes[:id].blank? then
+        categories.build(attributes)
+      else
+        category = categories.detect {|c| c.id == attributes[:id].to_i}
+        category.attributes = attributes unless category.nil?
+      end
+    end
+  end
+  
+protected
+  def save_categories
+    categories.each { |category| category.save }
+  end
+end

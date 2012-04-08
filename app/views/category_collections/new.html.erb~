@@ -1,0 +1,20 @@
+<h1>Добавить статью</h1>
+
+<% form_for @category_collection do |category_collection_form| %>
+  <%= f.error_messages %>
+  <p>
+      <%= f.label :title, "Заголовок:" %>
+      <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.select(:category_collection, @types.collect {|key, value| [value, key]}) %>
+  </p>
+  <p>
+    <h3>Добавить коллекцию</h3>
+    <% category_form.fields_for :items %>
+  </p>
+  <p>
+    <%= f.submit "Создать" %>
+    <%= link_to 'Назад', categories_path %>
+  </p>
+<% end %>

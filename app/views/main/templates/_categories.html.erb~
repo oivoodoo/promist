@@ -1,0 +1,35 @@
+<% i = 0 %>
+<% if @categories.size > 0 %>
+<table class="table_white" cellspacing="10">
+  <tbody>
+    <tr>
+      <% for category in @categories %>
+        <% if i == 3 %>
+          <tr>
+        <% end %>
+          <td style="margin-right: 10px;">
+          <% if category.items.size > 0 and not category.items.first.main_photo.nil? %>
+          <center>
+          <%= link_to "#{fu_image_tag(category.items.first.main_photo, {:action => :get_photo, :type => :medium})}", 
+              :controller => :main,
+              :action => :product,
+              :id => category.id %>
+          </center>
+          <center>
+            <a href="<%= url_for :controller => :main,
+              :action => :product,
+              :id => category.id %>" class="bottom_title"><%= category.title %></a>
+          </center>
+          <% end %>
+          </td>
+        <% if i == 2 %>
+            </tr>
+            <% i = -1 %>
+        <% end %>
+          <% i += 1 %>
+      <% end %>
+  </tbody>
+</table>
+<% else %>
+  Каталог пуст.
+<% end %>

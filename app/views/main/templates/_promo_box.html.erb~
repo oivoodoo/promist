@@ -1,0 +1,96 @@
+<div id="promo_box">
+  <div class="top"><%= image_tag('spacer.gif') %><!-- fix IE6 bug--></div>
+  <div class="content" style="padding: 0 20px;">
+    <p style="color: #246CD2; font-size: 22px;">
+      Рекламные сувениры:
+    </p>
+    <table class="main_page">
+    <tbody>
+    <tr>
+      <% i = 0 %>
+      <% for item in @main_advertisements %>
+      <td width="28%">
+        <center style="margin-right: 10px">
+        <%= link_to "#{fu_image_tag(item.main_photo, {:action => :get_photo, :type => :medium})}", 
+              :controller => :main,
+              :action => :item,
+              :id => item.id %>
+        <% break if i == 2 %>
+        <% i += 1 %>
+        </center>
+      </td>
+      <% end %>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <% i = 0 %>
+      <% for item in @main_advertisements %>
+        <td>
+            <center>
+              <%= link_to item.main_photo.title, :controller => :main,
+                :action => :item,
+                :id => item.id %>
+            </center>
+          </td>
+       <% break if i == 2 %>
+        <% i += 1 %>
+      </td>
+      <% end %>
+      <td>
+        <center style="margin-top: -10px;">
+        <a href="<%= url_for(:controller => :main, :action => :products, :type => 'advertisement') %>" style="color: #246CD2; font-size: 18px; text-decoration: underline;">весь каталог...</a><img src="<%= image_path('next_blue.png') %>" style="position: relative; top: 5px; left: 2px;"/>
+        </center>
+      </td>
+    </tr>
+    </tbody>
+    </table>
+    <br />
+    <p class="purple" style="font-size:22px;">
+      Мелкооптовые продажи:
+    </p>
+    <table class="main_page">
+    <tbody>
+    <tr>
+      <% i = 0 %>
+      <% for item in @main_sellers %>
+      <td width="28%">
+        <center style="margin-right: 10px">
+        <%= link_to "#{fu_image_tag(item.main_photo, {:action => :get_photo, :type => :medium})}", 
+              :controller => :main,
+              :action => :item,
+              :id => item.id %>
+        <% break if i == 2 %>
+        <% i += 1 %>
+        </center>
+      </td>
+      <% end %>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <% i = 0 %>
+      <% for item in @main_sellers %>
+        <td>
+            <center>
+              <%= link_to item.main_photo.title, :controller => :main,
+                :action => :item,
+                :id => item.id %>
+            </center>
+          </td>
+       <% break if i == 2 %>
+        <% i += 1 %>
+      </td>
+      <% end %>
+      <td>
+        <center style="margin-top: -10px;">
+        <a href="<%= url_for(:controller => :main, :action => :products, :type => 'seller') %>" class="purple" style="color: #eb008c !important; font-size: 18px; text-decoration: underline;">весь каталог...</a><img src="<%= image_path('next_red.png') %>" style="position: relative; top: 5px; left: 2px;"/>
+        </center>
+      </td>
+    </tr>
+    </tr>
+    </tbody>
+    </table>
+  </div>
+  <div class="bottom"></div>
+</div>

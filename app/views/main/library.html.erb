@@ -1,0 +1,8 @@
+<% content_for :header do %>
+  <%= render :partial => "templates/library_script" %>
+<% end %>
+
+<%= @page.content %>
+
+<%= render :partial => 'main/templates/library', :collection => @libraries %>
+

@@ -1,0 +1,24 @@
+<% if @top_selected == "library" %>
+  <% style1 = "header_selected" %>
+<% end %>
+<% if @top_selected == "clients" %>
+  <% style2 = "header_selected" %>
+<% end %>
+<% if @top_selected == "contacts" %>
+  <% style3 = "header_selected" %>
+<% end %>
+<% if @top_selected == "about" %>
+  <% style4 = "header_selected" %>
+<% end %>
+
+<div class="menu_top">
+   <ul>
+    <li class="<%= style1 %>"><%= link_to 'библиотека', :controller => :main, :action => :library %></li>
+    <li><span>|</span></li>
+    <li class="<%= style2 %>"><%= link_to 'наши клиенты', :controller => :main, :action => :clients %></a></li>
+    <li><span>|</span></li>
+    <li class="<%= style3 %>"><%= link_to 'контакты', :controller => :main, :action => :contacts %></li>
+    <li><span>|</span></li>
+    <li class="<%= style4 %>"><%= link_to 'о компании', :controller => :main, :action => :about %></a></li>
+  </ul>
+</div>

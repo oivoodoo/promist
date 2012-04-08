@@ -1,0 +1,40 @@
+<% content_for :header do %>
+
+<script type="text/javascript">
+
+var container = Array();
+
+var a1, a2, a3, a4, a5, a6, a7, a8, a9;
+var obj1, tObj, target, obj, block;
+
+function mover(obj, target, obj1) {
+  obj1 = document.getElementById('a'+target);
+  tObj = document.getElementById('block'+target);
+  if (tObj.style.display == 'none') {
+    container[target] = obj1.innerHTML;
+    obj1.innerHTML = "<img src=\"<%= image_path('bullit_down.png')%>\" />&nbsp;развернуть";
+	} else{ obj1.innerHTML = "<img src=\"<%= image_path('bullit_up.png')%>\" />&nbsp;свернуть";}
+}
+
+function mout(obj, target, obj1) {
+  obj1 = document.getElementById('a'+target);
+  obj1.innerHTML = container[target];
+}
+
+function hideshow(obj, target, obj1) {
+  obj1 = document.getElementById('a'+target);
+  tObj = document.getElementById('block'+target);
+
+  if (tObj.style.display == 'none') {
+    obj1.innerHTML = '<img src="<%= image_path('bullit_up.png')%>" alt="" />&nbsp;свернуть';
+    tObj.style.display = 'block';
+  } else {
+    obj1.innerHTML = container[target];
+    tObj.style.display = 'none';
+    tObj = document.getElementById('block'+target);
+  }
+}
+
+</script>
+
+<% end %>

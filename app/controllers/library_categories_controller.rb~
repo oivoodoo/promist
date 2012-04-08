@@ -1,0 +1,85 @@
+class LibraryCategoriesController < ApplicationController
+  # GET /library_categories
+  # GET /library_categories.xml
+  def index
+    @library_categories = LibraryCategory.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @library_categories }
+    end
+  end
+
+  # GET /library_categories/1
+  # GET /library_categories/1.xml
+  def show
+    @library_category = LibraryCategory.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @library_category }
+    end
+  end
+
+  # GET /library_categories/new
+  # GET /library_categories/new.xml
+  def new
+    @library_category = LibraryCategory.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @library_category }
+    end
+  end
+
+  # GET /library_categories/1/edit
+  def edit
+    @library_category = LibraryCategory.find(params[:id])
+  end
+
+  # POST /library_categories
+  # POST /library_categories.xml
+  def create
+    @library_category = LibraryCategory.new(params[:library_category])
+
+    respond_to do |format|
+      if @library_category.save
+        flash[:notice] = 'LibraryCategory was successfully created.'
+        format.html { redirect_to(@library_category) }
+        format.xml  { render :xml => @library_category, :status => :created, :location => @library_category }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @library_category.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /library_categories/1
+  # PUT /library_categories/1.xml
+  def update
+    @library_category = LibraryCategory.find(params[:id])
+
+    respond_to do |format|
+      if @library_category.update_attributes(params[:library_category])
+        flash[:notice] = 'LibraryCategory was successfully updated.'
+        format.html { redirect_to(@library_category) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @library_category.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /library_categories/1
+  # DELETE /library_categories/1.xml
+  def destroy
+    @library_category = LibraryCategory.find(params[:id])
+    @library_category.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(library_categories_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

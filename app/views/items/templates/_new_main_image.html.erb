@@ -1,0 +1,14 @@
+<% fields_for "item[new_main_image_attributes][]", new_main_image, :index => nil do |main_image_form| %>
+  <span>
+    <%= main_image_form.label :title, "Заголовок:" %>
+    <% if new_main_image.new_record? %>
+      <%= main_image_form.text_field :title, :value => "Иконка для главной страницы или для каталога" %>
+    <% else %>
+      <%= main_image_form.text_field :title %>
+    <% end %>
+    <%= main_image_form.file_field :image %>
+    <% unless new_main_image.new_record? %>
+      <%= image_tag(new_main_image.image.url(:medium)) %>
+    <% end %>
+  </span>
+<% end %>

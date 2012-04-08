@@ -1,0 +1,11 @@
+<% content_for :top_menu do %>
+    <% for page in @pages %>
+        <%= link_to page.page_type, :controller => :base_page, 
+                                :action => :edit_page, 
+                                :id => page.id, 
+                                :type => page.page_type %>
+      <br />
+    <% end %>
+    <%= link_to "Назад", :controller => :admin, :action => :index %>
+    <br />
+<% end %>

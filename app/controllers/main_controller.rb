@@ -1,0 +1,81 @@
+require 'application_constants'
+
+class MainController < ApplicationController
+  layout("application", conditions = {}, auto = false)
+  
+  include ApplicationConstants
+  
+  before_filter :include_categories, :except => [:index]
+
+  def index
+    @page = Page.find_main_page
+    @main_advertisements = MainItem.advertisement.first.items
+    @main_sellers = MainItem.seller.first.items
+    @new_libraries = LibraryArticle.find(:all, :conditions => ["is_checked = ?", true])
+    @title = @page.title unless @page.blank?
+    render :action => :index, :layout => "main"
+  end
+
+  def contacts
+    @page = Page.find_contacts_page
+    @title = @page.title unless @page.blank?
+    @top_selected = "contacts"
+  end
+
+  def about
+    @page = Page.find_about_page
+    @title = @page.title unless @page.blank?
+    @top_selected = "about"
+  end
+  
+  def clients
+    @page = Page.find_clients_page
+    @title = @page.title unless @page.blank?
+    @top_selected = "clients"
+  end
+  
+  def library
+    @page = Page.find_library_page
+    @title = @page.title unless @page.blank?
+    @top_selected = "library"
+    @libraries = LibraryCategory.all
+  end
+  
+  def libs
+    @library = LibraryArticle.find(params[:id])
+    @title = @library.title
+  end
+  
+  def products
+    @page = Page.find_main_page
+    @type = params[:type]
+    @category_collection = CategoryCollection.get_by_type(@type)
+    @categories = @category_collection.categories
+    @title = ITEM_TYPES[@type.to_sym]
+  end
+  
+  def product
+    @category = Category.find(params[:id])
+    @selected_id = @category.id
+    @items = @category.items
+    @title_page = @category.title
+    @title = @category.title
+  end
+
+  def category
+    @category = Category.find(params[:id])
+    @title = @category.title
+  end
+  
+  def item
+    @item = Item.find(params[:id])
+    @selected_id = @item.category.id
+    @title = @item.title
+  end
+
+protected
+  def include_categories
+    values = CategoryCollection.find_categories
+    @advertisement, @seller = values[:advertisement], values[:seller]
+  end
+end

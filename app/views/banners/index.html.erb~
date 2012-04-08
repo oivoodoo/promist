@@ -1,0 +1,10 @@
+<% content_for :top_menu do %>
+  <%= link_to "Добавить", new_banner_path %>
+  <%= link_to "Назад", :controller => :admin, :action => :index %>
+<% end %>
+
+<% for banner in @banners %>
+  <%= fu_photo_tag(banner, {:action => "get_banner"}) %>
+  <%= link_to "Удалить", banner, :confirm => "Вы действительно хотите удалить?", :method => :delete %>
+  <hr />
+<% end %>

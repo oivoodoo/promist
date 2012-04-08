@@ -1,0 +1,52 @@
+require 'application_constants'
+
+class CategoriesController < AdminController
+  include ApplicationConstants
+
+  def index
+    include_categories
+
+    @advertisement_category = CategoryCollection.find_by_category_collection_type("advertisement", 
+      :select => "id")
+    @seller_category = CategoryCollection.find_by_category_collection_type("seller", :select => "id")
+  end
+
+  def show
+    @category_collection = CategoryCollection.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @category_collections }
+    end
+  end
+
+  def edit
+    @category_collection = CategoryCollection.find(params[:id])
+    @types = ITEM_TYPES
+    @category_collection.categories.build
+    @category_collection.categories[0].items.build
+    @category_collection.categories[0].items[0].images.build
+  end
+
+  def update
+    @category_collection = CategoryCollection.find(params[:id])
+    @types = ITEM_TYPES
+
+    respond_to do |format|
+      if @category_collection.update_attributes(params[:library_article])
+        flash[:notice] = 'Страница успешно была обновлена.'
+        format.html { redirect_to(@category_collection) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @category_collection.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+protected
+  def include_categories
+    values = CategoryCollection.find_categories
+    @advertisement, @seller = values[:advertisement], values[:seller]
+  end
+end

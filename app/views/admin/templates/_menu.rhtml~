@@ -1,0 +1,6 @@
+<%= link_to 'Основные страницы', :controller => :base_page, :action => :index %><br />
+<%= link_to 'Категории библиотеки', :controller => :library_categories, :action => :index %><br />
+<%= link_to 'Библиотека', :controller => :library_articles, :action => :index %><br />
+<%= link_to 'Товар', :controller => :items, :action => :index %><br />
+<%= link_to 'Баннеры', :controller => :banners, :action => :index %><br />
+

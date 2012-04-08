@@ -1,0 +1,20 @@
+class AdminController < ApplicationController
+  before_filter :authenticate
+
+  layout("admin", conditions = {}, auto = false)
+
+  def index
+    
+  end
+
+ private
+  def authenticate
+    authenticate_or_request_with_http_basic do |user_name, password| 
+      user = User.authenticate(user_name, password)
+      if not user.nil? then
+        session[:user_id] = user.id;
+      end 
+      not user.nil?
+    end
+   end
+end

@@ -1,0 +1,7 @@
+<% content_for :top_menu do %>
+  <%= link_to "Добавить", new_banner_path %><br />
+  <%= link_to "Назад", :controller => :banners, :action => :index %>
+<% end %>
+
+<a href="<%= @banner.banner_url %>"><%= image_tag(@banner.image.url) %></a>
+<%= link_to "Удалить", @banner, :confirm => "Вы действительно хотите удалить?", :method => :delete %>

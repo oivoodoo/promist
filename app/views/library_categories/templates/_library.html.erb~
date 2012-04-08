@@ -1,0 +1,12 @@
+<tr>
+  <td width="25%"><%= library.title %></td>
+  <td>
+    <%= link_to "Показать", library %>
+  </td>
+  <td>
+    <%= link_to "Редактировать", edit_library_category_path(library) %>
+  <t/d>
+  <td>
+    <%= link_to "Удалить", library, :confirm => "Вы действительно хотите удалить?", :method => :delete %>
+  </td>
+</tr>

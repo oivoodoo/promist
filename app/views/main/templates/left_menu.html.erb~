@@ -1,0 +1,11 @@
+<div class="left_column">
+   <div class="menu_left">
+       для <span class="purple">рекламы</span>
+       <%= render :partial => 'templates/item_link', :collection => @advertisement %>
+   </div>
+   <div class="menu_left">
+      для <purple">торговли</span>
+      <%= render :partispan class="purple">торговли</span>
+      <%= render :partial => 'templates/item_link', :collection => @seller %>
+   </div>	
+  </div>

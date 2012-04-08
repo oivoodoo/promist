@@ -1,0 +1,13 @@
+<% form_tag '/library_articles/do_add_to_main_page' -%>
+  <% for category in @categories %>
+  <table>
+    <caption>
+      <%= category.title %>
+    </caption>
+    <tbody>
+      <%= render :partial => 'library_articles/templates/main_article', :collection => category.articles %>
+    </tbody>
+  </table>
+  <% end %>
+  <%= submit_tag "Обновить" %.
+<% end -%>

@@ -1,0 +1,1 @@
+<%= fu_photo_tag(editable_image, {:type => :thumb}) %>

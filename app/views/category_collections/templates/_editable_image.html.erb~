@@ -1,0 +1,33 @@
+<% content_for :header do %>
+    <%= javascript_include_tag :fckeditor %>
+<% end %>
+
+<% fields_for "item[editable_image][]", editable_image do |image_form| %>
+  <div class="editable_photo">
+    <table>
+      <tbody>
+        <tr>
+          <% if not editable_imag.new_record? then %>
+            <td>
+              <div style="margin-right: 10px;">
+                <!-- здесь должна быть картинка-->
+              </div>
+            </td>
+          <% end %>
+          <td>
+            <div class="editable_photo_file_upload">
+              <% if editable_image.new_record? then %>
+                <%= image_form.file_field :photo, :index => nil %>
+                <%= link_to_function "Удалить", "this.up('.editable_photo').remove()" %>
+              <% else %>
+                <%= link_to_function "Удалить", "mark_for_destroy_id(this, 'editable_photo')" %>
+                <%= image_form.hidden_field :id, :value => editable_photo.id, :index => nil %>
+              <% end %>
+              <%= image_form.hidden_field :should_destroy, :value => "0", :index => nil, :class => "should_destroy" %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>

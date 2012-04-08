@@ -1,0 +1,26 @@
+<% content_for :header do %>
+    <%= javascript_include_tag :fckeditor %>
+<% end %>
+
+<h1>Редактирование страницы</h1>
+
+<% form_for(@page, :html => { :multipart => true } ) do |f| %>
+    <%= f.error_messages %>
+    <p>
+        <%= f.label :title, "Заголовок:" %>
+        <%= f.text_field :title %>
+    </p>
+    <div>
+        <%= fckeditor_textarea("page", "content", :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+    </div>
+    <div>
+        <%= fckeditor_textarea("page", "right_content", :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+    </div>
+    <div>
+        <%= fckeditor_textarea("page", "left_content", :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+    </div>
+    <p>
+      <%= f.submit "Обновить" %>
+      <%= link_to 'Назад', pages_path %>
+    </p>
+<% end %>

@@ -1,0 +1,8 @@
+<% content_for :meta do %>
+  <% unless @page.nil? %>
+    <%= render :partial => "templates/meta", :object => @page %>
+  <% end %>
+<% end %>
+
+
+<%= render :partial => "main/templates/categories" %>

@@ -1,0 +1,11 @@
+<p>
+<%= f.label :title, "Заголовок:" %>
+<%= f.text_field :title %>
+</p>
+<p><%= f.label :description, "Описание:" %></p>
+<p><%= f.text_area :description, :rows => 5, :style => "width: 100%", :class => "mceEditor" %></p>
+<p><%= f.label :meta_keywords, "Мета слова(meta keywords):" %></p>
+<p><%= f.text_area :meta_keywords, :rows => 5, :style => "width: 100%" %></p>
+<p><%= f.label :meta_description, "Мета описание(meta description):" %></p>
+<p><%= f.text_area :meta_description, :rows => 5, :style => "width: 100%" %></p>
+<p><%= f.select('category_collection_id', @category_collections.collect {|collection| [collection.title, collection.id]}) %></p>

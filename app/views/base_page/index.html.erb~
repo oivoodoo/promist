@@ -1,0 +1,7 @@
+<%= render :partial => "base_page/templates/top_menu" %>
+
+<center>
+  <h3>
+    <%= flash[:notice] %>
+  </h3>
+</center>

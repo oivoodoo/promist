@@ -1,0 +1,17 @@
+development:
+  adapter: mysql
+  host: baze.promist.ru.postman.ru
+  timeout: 5000
+  username: promist_ru 
+  password: GiSoyFzU
+  database: promist_ru 
+  encoding: utf8
+
+production:
+  adapter: mysql
+  host: baze.promist.ru.postman.ru
+  timeout: 5000
+  username: promist_ru 
+  password: GiSoyFzU
+  database: promist_ru 
+  encoding: utf8

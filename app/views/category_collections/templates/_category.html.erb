@@ -1,0 +1,38 @@
+<tr>
+  <td width="125">
+    <%= image_tag('cms_images/apply.gif', :align => "absmiddle", :border => 0) %>
+    <%= link_to category.updated_at.strftime('%D %H:%m'), category %>
+  </td>
+  <td width="10">
+    <%= link_to_remote "#{image_tag('cms_images/ico_up.gif', :border => 0)}", 
+      :url => {
+        :controller => :category_collections,
+        :action => :up_item,
+        :id => category.id
+      },
+      :update => category.category_collection.category_collection_type,
+      :failure => "alert('HTTP Error ' + request.status + '!');" %>
+    <br/>
+    <%= link_to_remote "#{image_tag('cms_images/ico_down.gif', :border => 0)}", 
+      :url => {
+        :controller => :category_collections,
+        :action => :down_item,
+        :id => category.id,
+      },
+      :update => category.category_collection.category_collection_type,
+      :failure => "alert('HTTP Error ' + request.status + '!');" %>
+  </td>
+  <td width="35%">
+    <%= link_to category.title, category %>
+  </td>
+  <td>
+    <%= category.items.size %> предметов
+  </td>
+  <td>
+    <%= link_to "Редактировать", edit_category_path(category) %>
+  </td>
+  <td>
+    <%= link_to "Удалить", category, :confirm => "Вы действительно хотите удалить?", :method => :delete %>
+  </td>
+</tr>
+

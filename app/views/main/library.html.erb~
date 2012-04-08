@@ -1,0 +1,47 @@
+<% content_for :header do %>
+  <%= render :partial => "templates/library_script" %>
+<% end %>
+
+<h2><%= @page.title %></h2>
+<br />
+<%= @page.content %>
+
+<div class="dropdown_point">
+  <a class="dotted_border" href="#" onmouseover="mover(this, 4, a4);" onmouseout="mout(this, 4, a4);" onclick="hideshow(this, 4, a4);">Материалы и термины</a>
+  <span id="a4"><%= @materials.size %> статьи</span>
+   <div id="block4" style="display: none;">
+    <% for material in @materials %>
+     <div>
+        <a class="press" href="<%= url_for :controller => :main, :action => :libs, :id => material.id %>"><%= material.title%></a>
+        <p><%= material.description %></p>
+    </div>
+    <% end %>
+    </div>
+</div>
+
+<div class="dropdown_point">
+<a class="dotted_border" href="#" onmouseover="mover(this, 1, a1);" onmouseout="mout(this, 1, a1);" onclick="hideshow(this, 1, a1);">Производство рекламных сувениров</a>
+  <span id="a1"><%= @productions.size %> статьи</span>
+   <div id="block1" style="display: none;">
+    <% for material in @productions %>
+     <div>
+        <a class="press" href="<%= url_for :controller => :main, :action => :libs, :id => material.id %>"><%= material.title%></a>
+        <p><%= material.description %></p>
+      </div>
+    <% end %>
+    </div>
+</div>
+
+<div class="dropdown_point">
+  <a class="dotted_border" href="#" onmouseover="mover(this, 2, a2);" onmouseout="mout(this, 2, a2);" onclick="hideshow(this, 2, a2);">Маркетинг и рекламные технологии</a>
+  <span id="a2"><%= @marketing.size %> статьи</span>
+   <div id="block2" style="display: none;">
+    <% for material in @marketing %>
+     <div>
+        <a class="press" href="<%= url_for :controller => :main, :action => :libs, :id => material.id %>"><%= material.title%></a>
+        <p><%= material.description %></p>
+    </div>
+    <% end %>
+    </div>
+</div>
+

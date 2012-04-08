@@ -1,0 +1,48 @@
+<% content_for :header do %>
+    <%= javascript_include_tag :fckeditor %>
+<% end %>
+
+<% content_for :top_menu do %>
+  <%= render :partial => "library_articles/templates/top_menu" %>
+  <%= link_to 'Назад', library_articles_path %>
+<% end %>
+
+<h1>Добавить статью</h1>
+
+<% form_for @library_article do |f| %>
+  <%= f.error_messages %>
+  <p>
+      <%= f.label :title, "Заголовок:" %>
+      <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :keywords, "Мета слова(meta keywords):" %>
+  </p>
+  <p>
+    <%= f.text_area :keywords, :rows => 5, :style => "width: 100%" %>
+  </p>
+  <p>
+    <%= f.label :meta_description, "Мета описание(meta description):" %>
+  </p>
+  <p>
+    <%= f.text_area :meta_description, :rows => 5, :style => "width: 100%" %>
+  </p>
+  <p>
+    <%= f.select(:library_category_id, @categories.collect {|category| [category.title, category.id]}) %>
+  </p>
+  <div>
+      <p>
+        Краткое описание(под ссылкой в библиотеке)
+      </p>
+      <%= fckeditor_textarea("library_article", "description", :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+  </div>
+  <div>
+      <p>
+        Содержание:
+      </p>
+      <%= fckeditor_textarea("library_article", "content", :toolbarSet => 'Simple', :width => '100%', :height => '300px') %>
+  </div>
+  <p>
+    <%= f.submit "Создать" %>
+  </p>
+<% end %>

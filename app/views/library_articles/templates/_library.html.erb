@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    <%= library.title %>
+  </td>
+  <td>
+    <%= library.category.title %>
+  </td>
+  <td>
+    <%= library.description %>
+  </td>
+  <td><%= link_to "Редактировать", edit_library_article_path(@library_article) %></td>
+  <td><%= link_to "Удалить", @library_article, :confirm => "Вы действительно хотите удалить?", :method => :delete %></td>
+</tr>
+<tr>
+  <td colspan="5">
+    <%= library.content %>
+  </td>
+</tr>
+

@@ -1,0 +1,9 @@
+<% fields_for "item[libraries_attributes][]", new_library do |library_form| %>
+  <div class="library_block">
+      <span>
+        <%= select_tag("item[libraries_attributes][][id]", options_from_collection_for_select(@libraries, :id, :title, {:include_blank => false, :selected => new_library.id}))%>
+        <%= link_to_function "Удалить", "mark_for_destroy_id(this, 'library_block')" %>
+        <%= library_form.hidden_field :should_destroy, :value => "0", :index => nil, :class => "should_destroy" %>
+      </span>
+  </div>
+<% end %>

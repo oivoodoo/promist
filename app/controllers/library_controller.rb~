@@ -1,0 +1,70 @@
+class LibraryController < AdminController
+  def index
+    @libraries = LibraryArticle.find(:all)
+  end
+
+  def show
+    @library = LibraryArticle.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @library }
+    end
+  end
+
+  def new
+    @library = LibraryArticle.new
+    @types = LIBRARY_TYPES
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @library }
+    end
+  end
+
+  def edit
+    @library = LibraryArticle.find(params[:id])
+    @types = LIBRARY_TYPES
+  end
+
+  def create
+    @library = LibraryArticle.new(params[:library])
+    @types = LIBRARY_TYPES
+    
+    respond_to do |format|
+      if @library.save
+        flash[:notice] = 'Страница успешно была добавлена.'
+        format.html { redirect_to(@library) }
+        format.xml  { render :xml => @library, :status => :created, :location => @library }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @library.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @library = LibraryArticle.find(params[:id])
+
+    respond_to do |format|
+      if @library.update_attributes(params[:library])
+        flash[:notice] = 'Страница успешно была обновлена.'
+        format.html { redirect_to(@library) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @library.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @library = LibraryArticle.find(params[:id])
+    @library.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to(library_articles_url) }
+      format.xml  { head :ok }
+    end
+  end
+end

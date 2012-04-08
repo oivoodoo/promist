@@ -1,0 +1,2 @@
+<%= render :partial => "main/templates/item", :object => @item %>
+

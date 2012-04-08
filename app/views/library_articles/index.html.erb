@@ -1,0 +1,21 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'prototype'%>
+  <%= javascript_include_tag 'application'%>
+<% end %>
+<% content_for :top_menu do %>
+  <%= render :partial => "library_articles/templates/top_menu" %>
+  <%= link_to "Назад", :controller => :admin, :action => :index %>
+<% end %>
+
+<% for category in @categories %>
+  <% if category.articles.size > 0 %>
+    <%= category.title %>
+    <table>
+      <tbody id="<%= category.title %>">
+        <%= render :partial => "library_articles/templates/short_library", 
+                   :collection => category.items_order_position %>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+

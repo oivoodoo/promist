@@ -1,0 +1,3 @@
+<h1><%= @library.title %></h1>
+<br />
+<%= @library.content %>

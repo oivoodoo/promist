@@ -1,0 +1,12 @@
+<div id="footer">
+  <div class="line footer_line">&nbsp</div>
+ <div class="content">
+  <div class="left" style="width: 320px;">
+    Агенство <%= link_to "\"Промист\"", :controller => :main, :action => :index %> производит и продает <%= link_to "товары для рекламы", :controller => :main, :action => :products, :type => "advertisement"%> и <%= link_to "розничной торговли", :controller => :main, :action => :products, :type => "seller" %>: <%= link_to "силиконовые и слеп-браслеты", :controller => :main, :action => :product, :id => 1 %>, рекламные сувениры, оптовая продажа сумок и бижутерии, аксессуары и сумки оптом.
+  </div>
+  <div class="right">
+    <%= render :partial => "templates/footer_banner", :collection => @footer_banners %>
+  </div>
+  <div style="clear: both;">&nbsp</div>
+ </div>
+</div>

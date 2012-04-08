@@ -1,0 +1,100 @@
+require 'application_constants'
+
+class Item < ActiveRecord::Base
+  include ApplicationConstants
+  
+  default_scope :order => "position"
+
+  has_many :photos, :dependent => :destroy
+  has_many :images, :dependent => :destroy
+  has_many :libraries, :class_name => "LibraryArticle"
+
+  belongs_to :category
+  belongs_to :main_item
+  
+  validates_presence_of :title
+  validates_length_of :title,
+                      :within => 4..128
+
+  validates_associated :images
+  validates_associated :photos
+
+  after_update :save_models
+  after_update :remove_main_image
+  after_update :save_libraries
+  
+  def self.find_items
+    {
+      :advertisement => find_by_item_type(ITEM_TYPES[:advertisement]),
+      :seller => find_by_item_type(ITEM_TYPES[:seller])
+    }
+  end
+  
+  def main_photo
+    photos[0] if photos.size > 0
+  end
+  
+  def editable_images_attributes=(editable_images_attributes)
+    editable_images_attributes.each do |attributes|
+      if attributes[:id].blank?
+        images.build(attributes)
+      else
+        image = images.detect {|image| image.id == attributes[:id].to_i}
+        image.attributes = attributes unless image.nil?
+      end
+    end
+  end
+  
+  def images_attributes=(images_attributes)
+    images_attributes.each do |attributes|
+      images.build(attributes)
+    end
+  end
+
+  def new_main_image_attributes=(image_attributes)
+    image_attributes.each do |attributes|
+      if not attributes[:uploaded_data].nil?
+        if photos.size > 0
+          photos.destroy_all
+        end
+        photos.build(attributes)
+      end
+    end
+  end
+  
+  def libraries_attributes=(libraries_attributes)
+    libraries_attributes.each do |attributes|
+      unless attributes[:id].nil?
+        libraries.delete_all
+        libraries << LibraryArticle.find(attributes[:id])
+      end
+    end
+  end
+
+protected
+  def save_models
+    [images, photos].each do |collection| 
+      collection.each do |image|
+        if image.should_destroy?
+          image.destroy
+        else
+          image.save(false)
+        end
+      end
+    end
+  end
+
+  def save_libraries
+    libraries.each do |library|
+      if library.should_destroy? then
+        libraries.delete library
+      else
+        library.save(false)
+      end
+    end
+  end
+  
+  def remove_main_image
+    Photo.find(@main_image_id).delete unless @main_image_id.nil?
+  end
+end

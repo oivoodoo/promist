@@ -1,0 +1,16 @@
+class Banner < ActiveRecord::Base
+  has_attachment :content_type => ['image/jpeg', :image],
+                 :processor    => :rmagick,
+                 :thumbnails   => {
+                    :medium => [418, 463],
+                    :thumb => [85, 85]
+                 }
+
+  belongs_to :page
+
+  attr_accessor :should_destroy
+
+  def should_destroy?
+    should_destroy.to_i == 1
+  end
+end

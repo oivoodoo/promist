@@ -1,0 +1,57 @@
+<% i = 0 %>
+<% if @items.size > 1 %>
+<div id="category_description">
+  <%= @category.description %>
+</div>
+
+<table cellspacing="10">
+  <tbody>
+      <% iterator = 0 %>
+      <% for item in @items %>
+        <% if i == 0 %>
+          <tr>
+        <% end %>
+        <td style="margin-right: 15px; width: 150px;">
+          <center>
+          <% if not item.main_photo.nil? %>
+          <%= link_to "#{image_tag(item.main_photo.image.url(:medium))}", 
+              :controller => :main,
+              :action => :item,
+              :id => item.id %>
+          </center>
+         <% else %>
+            картинка не найдена
+          <% end %>
+        </td>
+         <% if i == 3 or @items.size == iterator * 4 + i + 1%>
+          </tr>
+		<% j = 0 %>
+		<% while j < 4 %>
+			<% if j == 0 %>
+          			<tr>
+        		<% end %>
+				<% if not @items[iterator * 4 + j].nil? and not @items[iterator * 4 + j].main_photo.nil? %> 
+			        <td style="margin-right: 15px; width: 150px;">
+					<center>
+						<a href="<%= url_for :controller => :main,
+						:action => :item,
+						:id => @items[iterator * 4 + j].id %>" class="bottom_title"><%= @items[iterator * 4 + j].main_photo.title %></a>
+					</center>
+				</td>
+				<% end %>
+         		<% if j == 3 %>
+          			</tr>
+			<% end %>
+        		<% j += 1 %>
+        	<% end %>
+		<% iterator += 1 %>
+	<% end %>
+        <% i = -1 if i == 3 %>
+        <% i += 1 %>
+      <% end %>
+  </tbody>
+</table>
+<% elsif @items.size == 1 %>
+  <%= render :partial => "main/templates/item", :object => @items[0] %>
+<% end %>
+

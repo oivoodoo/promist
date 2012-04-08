@@ -1,0 +1,13 @@
+<% fields_for "item[images_attributes][]", new_image do |image_form| %>
+    <div class="photo_block">
+      <p>
+        <%= image_form.label :title, "Заголовок:" %>
+        <%= image_form.text_field :title %>
+      </p>
+      <p>
+        <%= image_form.file_field :image, :index => nil %>
+        <%= link_to_function "Удалить", "this.up('.photo_block').remove()" %>
+        <%= image_form.hidden_field :should_destroy, :value => "0", :index => nil, :class => "should_destroy" %>
+      </p>
+    </div>
+<% end %>

@@ -1,0 +1,269 @@
+HTLM, BODY { 
+border : 0; 
+margin : 4px; 
+padding : 0; 
+background : #ffffff; 
+} 
+IMG { 
+border : 0; 
+} 
+IMG.valign { 
+vertical-align : middle; 
+} 
+FORM { 
+margin : 0; 
+padding : 0; 
+display : inline; 
+} 
+TABLE, TR, TD, P, DIV, EM, SPAN, INPUT, SELECT, TEXTAREA { 
+font-family : verdana, helvetica, sans-serif; 
+font-size : 11px; 
+} 
+TABLE, TR, TD, P, DIV, EM, SPAN, TEXTAREA { 
+line-height : 17px; 
+} 
+TABLE, TR, TD, P, DIV { 
+vertical-align : top; 
+} 
+INPUT { 
+vertical-align : middle; 
+} 
+#page a, #page_hover A { 
+display : block; 
+padding : 0 5px 0 5px; 
+margin : 5px 4px 5px 0; 
+text-decoration : none; 
+border : 1px solid #dddddd; 
+float : left; 
+} 
+#page a, #page_hover a:hover { 
+color : #1a5e97; 
+background : #ffffff; 
+} 
+#page a:hover, #page_hover A { 
+color : #000000; 
+background : #eef3f7; 
+} 
+.text { 
+padding : 4px; 
+clear : both; 
+} 
+.text_title { 
+font-weight : bold; 
+padding : 10px 4px 0 4px; 
+clear : both; 
+} 
+DIV SPAN.right { 
+font : normal 100% verdana, helvetica, sans-serif; 
+float : right; 
+padding : 0 0 0 10px; 
+} 
+A:link, A:active, A:visited { 
+color : #004f98; 
+text-decoration : none; 
+} 
+A:hover { 
+color : #000000; 
+text-decoration : underline; 
+} 
+HTML#comments LI DIV { 
+width : auto; 
+} 
+#comments UL { 
+list-style-type : none; 
+width : auto; 
+margin : 0; 
+padding : 0; 
+} 
+#comments LI { 
+border : 1px solid #eef3f7; 
+clear : both; 
+margin : 5px 0 0 0; 
+} 
+#comments LI A.edit { 
+background-color : #f4f7fa; 
+border-bottom : 1px solid #eef3f7; 
+color : #000000; 
+display : block; 
+padding : 5px; 
+text-decoration : none; 
+} 
+#comments LI A.edit:hover { 
+background-color : #ffffff; 
+} 
+#comments LI DIV { 
+font-weight : bold; 
+background-color : #f9fbfc; 
+color : #000000; 
+display : block; 
+padding : 5px; 
+text-decoration : none; 
+} 
+#comments LI div:hover { 
+background-color : #ffffff; 
+} 
+#comments DIV EM { 
+display : block; 
+font : normal 100% verdana, helvetica, sans-serif; 
+padding : 5px; 
+} 
+#comments DIV em.quote { 
+background-color : #ffffff; 
+border : 1px solid #eef3f7; 
+display : block; 
+font : normal 100% verdana, helvetica, sans-serif; 
+padding : 5px; 
+margin : 5px 5px 5px 10px; 
+} 
+#comments DIV EM P { 
+padding : 0 0 5px 0; 
+margin : 0; 
+} 
+#comments DIV LABEL { 
+background-color : #ffffff; 
+border : 1px solid #eef3f7; 
+display : block; 
+font : normal 100% verdana, helvetica, sans-serif; 
+line-height : 17px; 
+padding : 5px; 
+} 
+#comments DIV LABEL P { 
+padding : 0 0 5px 0; 
+} 
+#comments DIV SPAN { 
+float : right; 
+font : normal 90% verdana, helvetica, sans-serif; 
+} 
+#foto TD { 
+border : 1px solid #eef3f7; 
+} 
+#foto TD A { 
+background-color : #f9fbfc; 
+color : #000000; 
+display : block; 
+padding : 10px; 
+text-align : center; 
+text-decoration : none; 
+width : auto; 
+} 
+#foto TD A.edit { 
+background-color : #f4f7fa; 
+border-bottom : 1px solid #eef3f7; 
+font : normal 100% verdana, helvetica, sans-serif; 
+} 
+#foto IMG.edit { 
+border : 0; 
+} 
+#foto TD a:hover { 
+background-color : #ffffff; 
+} 
+#foto IMG { 
+border : 1px solid #dfdfdf; 
+} 
+#cms_nav { 
+font-weight : bold; 
+padding : 5px; 
+margin : 5px 0 0 0; 
+border : 1px solid #a4b8d3; 
+background-color : #eef3f7; 
+clear : both; 
+} 
+#cms_nav A:link, #cms_nav A:active, #cms_nav A:visited { 
+text-decoration : none;
+}
+#cms_nav A:hover { 
+text-decoration : underline;
+}
+#polosa { 
+background : url(polosa.gif) repeat-x; 
+height : 9px; 
+width : auto; 
+clear : both; 
+} 
+SELECT, INPUT.pole, TEXTAREA { 
+background-color : #fcfcfc; 
+border : 1px solid #a4b8d3; 
+} 
+INPUT.button { 
+background-color : #eef3f7; 
+border : 1px solid #a4b8d3; 
+} 
+.error { 
+font-weight : bold; 
+color : #e43514; 
+} 
+.red { 
+color : #e43514; 
+} 
+.star-rating { 
+list-style : none; 
+margin : 0; 
+padding : 0; 
+width : 100px; 
+height : 20px; 
+position : relative; 
+background : url(../cms_images/star.gif) repeat-x top left; 
+} 
+.star-rating LI { 
+padding : 0; 
+margin : 0; 
+float : left; 
+} 
+.star-rating LI A { 
+display : block; 
+width : 20px; 
+height : 20px; 
+text-decoration : none; 
+text-indent : -9000px; 
+z-index : 20; 
+position : absolute; 
+padding : 0; 
+} 
+.star-rating LI a:hover { 
+background : url(../cms_images/star.gif) left bottom; 
+z-index : 1; 
+left : 0; 
+border : none; 
+} 
+.star-rating A.one_star { 
+left : 0; 
+} 
+.star-rating A.one_star:hover { 
+width : 20px; 
+} 
+.star-rating A.two_stars { 
+left : 20px; 
+} 
+.star-rating A.two_stars:hover { 
+width : 40px; 
+} 
+.star-rating A.three_stars:hover { 
+width : 60px; 
+} 
+.star-rating A.three_stars { 
+left : 40px; 
+} 
+.star-rating A.four_stars { 
+left : 60px; 
+} 
+.star-rating A.four_stars:hover { 
+width : 80px; 
+} 
+.star-rating A.five_stars { 
+left : 80px; 
+} 
+.star-rating A.five_stars:hover { 
+width : 100px; 
+} 
+.star-rating li.current_stars { 
+display : block; 
+width : 20px; 
+height : 20px; 
+text-decoration : none; 
+text-indent : -9000px; 
+position : absolute; 
+padding : 0; 
+background : url(../cms_images/star.gif) left bottom; 
+z-index : 1; 
+border : none; 
+}

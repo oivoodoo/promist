@@ -1,0 +1,23 @@
+class AddMetaDescription < ActiveRecord::Migration
+  def self.up
+    add_column :pages, :meta_keywords, :string
+    add_column :items, :meta_keywords, :string
+    add_column :library_articles, :meta_keywords, :string
+    add_column :categories, :meta_keywords, :string
+    add_column :pages, :meta_description, :text
+    add_column :items, :meta_description, :text
+    add_column :library_articles, :meta_description, :text
+    add_column :categories, :meta_description, :text
+  end
+
+  def self.down
+    remove_column :pages, :meta_keywords
+    remove_column :items, :meta_keywords
+    remove_column :library_articles, :meta_keywords
+    remove_column :categories, :meta_keywords
+    remove_column :pages, :meta_description
+    remove_column :items, :meta_description
+    remove_column :library_articles, :meta_description
+    remove_column :categories, :meta_description
+  end
+end

@@ -1,0 +1,1 @@
+<%= fu_photo_tag(footer_banner, {:action => "get_banner"}) %>

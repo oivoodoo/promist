@@ -1,0 +1,24 @@
+<% content_for :top_menu do %>
+  <%= link_to "Добавить для рекламы", 
+    :controller => :main_items, 
+    :action => :new, 
+    :type => "advertisement" %><br />
+  <%= link_to "Добавить для продажи", 
+    :controller => :main_items, 
+    :action => :new,
+    :type => "seller" %><br />
+  <%= link_to 'Назад', :controller => :main_items, :action => :index %>
+<% end %>
+
+<h3>Добавить товар</h3>
+
+<% form_for(@item, :url => {:controller => :main_items, :action => :create, :type => params[:type]}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= select("item", "id", @items.collect{|item| [item.title, item.id]}) %>
+  </p>
+  <p>
+    <%= f.submit 'Добавить' %>
+  </p>
+<% end %>

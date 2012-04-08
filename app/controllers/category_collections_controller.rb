@@ -1,0 +1,68 @@
+require 'application_constants'
+
+class CategoryCollectionsController < AdminController
+  include ApplicationConstants
+
+  def index
+    include_categories
+
+    @advertisement_category = CategoryCollection.find_by_category_collection_type("advertisement", 
+      :select => "id")
+    @seller_category = CategoryCollection.find_by_category_collection_type("seller", :select => "id")
+  end
+
+  def up_item
+    new_position(-1)
+
+    respond_to do |wants|
+      wants.html {
+        render :partial => "category_collections/templates/category.html.erb", :collection => Category.find(:all, :order => "position", :conditions => ['category_collection_id = ?', @category.category_collection.id])
+      }
+    end
+  end
+
+  def down_item
+    new_position(1)
+
+    respond_to do |wants|
+      wants.html {
+        render :partial => "category_collections/templates/category.html.erb", :collection => Category.find(:all, :order => "position", :conditions => ['category_collection_id = ?', @category.category_collection.id])
+      }
+    end
+  end
+  
+protected 
+  def new_position(to)
+    @category = Category.find(params[:id], :select => "id, category_collection_id, position, title")
+    categories = Category.find(:all, :select => "id", :conditions => ['category_collection_id = ?', @category.category_collection.id])
+    @category.position = ensure_position(update_position(@category, to), categories.size)
+    @category.save(false)
+    
+    to_update = Category.find(:first, 
+      :select => "id, position, title", 
+      :conditions => ['id != ? and position = ?', @category.id, @category.position])
+    unless to_update.nil?
+      to_update.position = ensure_position(update_position(to_update, -to), categories.size)
+      to_update.save(false)
+    end
+  end
+
+  def update_position(item, to)
+    item.position = item.position + to
+    item.position
+  end
+
+  def ensure_position(position, size)
+    if position > size
+      position = 0
+    elsif position < 0
+      position = size - 1
+    end
+    position
+  end
+
+  def include_categories
+    values = CategoryCollection.find_categories
+    @advertisement, @seller = values[:advertisement], values[:seller]
+  end
+end

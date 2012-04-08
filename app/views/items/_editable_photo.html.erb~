@@ -1,0 +1,9 @@
+ <% fields_for "editable_photos[]", editable_photo do |photo_form| %>  
+  <div class="photo_block">
+    <%= fu_image_tag(editable_photo, :thumb) %>
+    <%= link_to_function "Удалить", "mark_for_destroy_id(this, 'photo_block')" %>
+    <%= photo_form.hidden_field :id, :value => editable_photo.id, :index => nil %>
+    <%= photo_form.hidden_field :should_destroy, :value => "0", :index => nil, :class => "should_destroy" %>
+  </div>
+<% end %>
+

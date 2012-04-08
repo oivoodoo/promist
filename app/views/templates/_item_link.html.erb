@@ -1,0 +1,13 @@
+<% if not @selected_id.nil? and item_link.id == @selected_id %>
+  <li>
+    <a class="category_selected" href="<%= url_for(:controller => :main, :action => :product, :id => item_link.id)%>">
+      <%= item_link.title %>
+    </a>
+  </li>
+<% else %>
+  <li>
+    <a href="<%= url_for(:controller => :main, :action => :product, :id => item_link.id)%>">
+      <%= item_link.title %>
+    </a>
+  </li>
+<% end %>

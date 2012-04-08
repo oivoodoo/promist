@@ -1,0 +1,7 @@
+<% content_for :meta do %>
+  <%= render :partial => "templates/meta", :object => @library %>
+<% end %>
+
+<h1 style="font-size:16px"><%= @library.title %></h1>
+<br />
+<%= @library.content %>

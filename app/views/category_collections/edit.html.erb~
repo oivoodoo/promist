@@ -1,0 +1,22 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'application' %>
+<% end %>
+
+<% content_for :top_menu do %>
+  <%= link_to 'Назад', categories_path %>
+<% end %>
+
+<% form_for @category_collection do |category_collection_form| %>
+  <%= category_collection_form.error_messages %>
+  <div id="categories">
+  </div>
+  <p>
+    <%= link_to_function "Добавить категорию" do |page|
+      page.insert_html :bottom, "categories", :partial => "category_collections/templates/editable_category", :object => Category.new
+    end %>
+  </p>
+  <p>
+    <%= category_collection_form.submit "Обновить" %>
+  </p>
+<% end %>

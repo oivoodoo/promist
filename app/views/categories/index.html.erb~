@@ -1,0 +1,19 @@
+<% content_for :top_menu do %>
+  <%= link_to 'Добавить товар', new_item_path %><br />
+  <%= link_to 'Назад', :controller => :admin, :action => :index %>
+<% end %>
+
+<table>
+  <tbody id="productions">
+    <%= render :partial => "library_articles/templates/short_library", 
+               :collection => @items %>
+  </tbody>
+</table>
+
+<td><%= item.title %></td>
+      <td><%= truncate item.content, :length => 64, :omission => "#{link_to('...', item)}" %></td>
+      <td><%= item.images.size %></td>
+      <td><%= link_to 'Показать', item %></td>
+      <td><%= link_to 'Редактировать', edit_item_path(item) %></td>
+      <td><%= link_to 'Удалить', item, :confirm => 'Вы действительно хотите удалить?', :method => :delete %></td>
+

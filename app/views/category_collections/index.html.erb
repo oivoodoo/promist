@@ -1,0 +1,30 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'application' %>  
+<% end %>
+
+<% content_for :top_menu do %>
+  <%= link_to "Добавить", new_category_path %>
+  <%= link_to "Назад", :controller => :items, :action => :index %>
+<% end %>
+
+<% if @advertisement_category.categories.size > 0 %>
+  Для рекламы: 
+  <table>
+    <tbody id="advertisement">
+      <%= render :partial => "category_collections/templates/category",
+                 :collection => @advertisement %>
+    </tbody>
+  </table>
+<% end %>
+<% if @seller_category.categories.size > 0 %>
+  <hr />
+  Для торговли: 
+  <table>
+    <tbody id="seller">
+      <%= render :partial => "category_collections/templates/category",
+                 :collection => @seller %>
+    </tbody>
+  </table>
+<% end %>
+

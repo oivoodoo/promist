@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<title><%= @title || 'promist.ru'%></title>
+<%= yield :meta %>
+<% unless @page.nil? %>
+  <%= render :partial => 'templates/meta', :object => @page %>
+<% end %><%= stylesheet_link_tag 'promist/main' %>
+<!--[if lte IE 7]>
+  <%= stylesheet_link_tag 'promist/ie7.css'%>
+<!--[if lte IE 6]>
+  <%= stylesheet_link_tag 'promist/ie6.css'%>
+<![endif]-->
+<%= yield :header %>
+</head>
+<body>
+<div id="content">
+  <%= render :partial => 'templates/header' %>
+  <%= yield :promo_box %>
+ <div id="main">
+   <div class="main_content"  style="width: 100% !important">
+      <%= yield :layout %>
+   </div>
+   <br style="clear:both;" />
+   <%= render :partial => 'templates/footer' %>
+  </div>
+</div>
+</body>
+</html>
+

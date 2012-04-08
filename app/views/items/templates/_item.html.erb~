@@ -1,0 +1,8 @@
+<tr>
+  <td width="35%"><%= item.title %></td>
+  <td><%= truncate item.content, :length => 64, :omission => "#{link_to('...', item)}" %></td>
+  <td>Картинок(<%= item.images.size %>)</td>
+  <td><%= link_to 'Показать', item %></td>
+  <td><%= link_to 'Редактировать', edit_item_path(item) %></td>
+  <td><%= link_to 'Удалить', item, :confirm => 'Вы действительно хотите удалить?', :method => :delete %></td>
+</tr>

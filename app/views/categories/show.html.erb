@@ -1,0 +1,19 @@
+<% content_for :top_menu do %>
+  <%= link_to 'Добавить', new_category_path %>
+  <%= link_to 'Назад', :controller => :category_collections, :action => :index %>
+<% end %>
+
+<table>
+  <tbody>
+    <tr>
+      <td><%= @category.title %>(<%= @category.items.size %> предметов)</td>
+      <td><%= link_to "Редактировать", edit_category_path(@category) %></td>
+      <td><%= link_to "Удалить", @category, :confirm => "Вы действительно хотите удалить?", :method => :delete %></td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <%= @category.content %>
+      </td>
+    </tr>
+  </tbody>
+</table>

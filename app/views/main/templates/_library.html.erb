@@ -1,0 +1,14 @@
+<% if library.articles.size > 0 %>
+  <div class="dropdown_point">
+    <a class="dotted_border" href="#" onmouseover="mover(this, <%= library.id %>, a<%= library.id %>);" onmouseout="mout(this, <%= library.id %>, a<%= library.id %>);" onclick="hideshow(this, <%= library.id %>, a<%= library.id %>);"><%= library.title %></a>
+    <span id="a<%= library.id %>"><%= library.articles.size %> статьи</span>
+     <div id="block<%= library.id %>" style="display: none;">
+      <% for article in library.articles %>
+       <div>
+          <a class="press" href="<%= url_for :controller => :main, :action => :libs, :id => article.id %>"><%= article.title%></a>
+          <p><%= article.description %></p>
+      </div>
+      <% end %>
+      </div>
+  </div>
+<% end %>

@@ -1,0 +1,245 @@
+require 'application_constants'
+require "#{RAILS_ROOT}/app/models/category"
+require "#{RAILS_ROOT}/app/models/category_collection"
+require "#{RAILS_ROOT}/app/models/item"
+
+class CreateCategories < ActiveRecord::Migration
+  include ApplicationConstants
+  
+  def self.up
+    create_table :categories do |t|
+      t.string :title
+      t.integer :category_collection_id
+      t.integer :position, :default => 0
+      t.text :content
+
+      t.timestamps
+    end
+
+    create_table :category_collections do |t|
+      t.string :title
+      t.string :category_collection_type
+      t.integer :position, :default => 0
+
+      t.timestamps
+    end
+
+    CategoryCollection.create :title => ITEM_TYPES[:advertisement],
+                              :category_collection_type => "advertisement"
+
+    CategoryCollection.create :title => ITEM_TYPES[:seller],
+                              :category_collection_type => "seller"
+
+    Category.create :title => "Силиконовые браслеты",
+      :category_collection_id => "1",
+      :position => 0,
+      :content => "
+<div class='descr'>
+<img src='/images/9z2xfdas92fovhw.JPG' alt=''>
+<div class='big_purple'>Силиконовые браслеты</div>
+<div style='text-align: justify;'><span><span style='font-size: small;' class='Apple-style-span'>&nbsp;&nbsp;&nbsp; Браслеты появились в Европе и США как средство сбора денег на&nbsp;
+  различные благотворительные цели и уже к 2006 году
+  </span></span><span><span style='font-size: small;' class='Apple-style-span'>стали глобальным идеологическим товаром, символом тех или иных ценностей, 
+  </span></span><span><span style='font-size: small;' class='Apple-style-span'>позволяющим 
+    людям показать свою принадлежность к различным социальным группам.
+  </span></span><span style='font-size: small;' class='Apple-style-span'>
+
+    <br></span><span><span style='font-size: small;' class='Apple-style-span'>&nbsp;&nbsp;&nbsp; В России браслеты используются исключительно как рекламный сувенир или средство разделить аудиторию на разные группы или команды.</span></span><span style='font-size: small;' class='Apple-style-span'>
+    <br></span>
+</div>
+<div style='text-align: justify;'><span style='font-size: 13px;' class='Apple-style-span'>
+    <br></span>
+</div>
+<div style='text-align: justify;'><span style='font-size: 13px;' class='Apple-style-span'><span style='font-weight: bold;' class='Apple-style-span'><span style='color: rgb(255, 0, 0);' class='Apple-style-span'>НА СКЛАДЕ В МОСКВЕ!</span></span> - ЖЕЛТЫЕ, ГОЛУБЫЕ, РОЗОВЫЕ, СИНИЕ, ЗЕЛЕНЫЕ, ЧЕРНЫЕ, КРАСНЫЕ, БЕЛЫЕ, САЛАТОВЫЕ<span style='font-size: 16px;' class='Apple-style-span'>&nbsp;</span>И ОРАНЖЕВЫЕ БРАСЛЕТЫ.&nbsp;</span>
+</div>
+<div style='text-align: justify;'><span style='font-size: 13px;' class='Apple-style-span'>.</span>
+  <br>
+</div>
+<br>
+</div>
+<div class='descr'>
+<h2>Технические детали</h2>
+<div class='descr'><span style='font-size: medium;'>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Силикон: анти-аллергенный материал, не растягивается, не трескается.&nbsp;</p>
+  <p style='margin: 0px; font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>Размеры</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>:&nbsp;</b></span></p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>202х12х2 мм (стандартный)&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>202х15х2 мм (стандартный широкий)&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>180х12х5 мм (подростковый или на женскую руку)&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>180х5х2 мм (подростковый, тонкий)&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Под заказ можно сделать любой другой размер – это будет стоить 5000 руб. дополнительно. Это стоимость изготовления новой пресс-формы, в которой браслеты штампуются. Такая же пресс-форма нужна, если вы хотите сделать на браслете выдавленное или выпуклое нанесение.&nbsp;</p>
+  <p style='margin: 0px; font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>Нанесение</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>:&nbsp;</b></span></p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>1)Методом шелкографии в 1-3 цвета. (в том числе для использования в бассейнах)&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>2)Рельефное (выдавленное выпуклое) нанесение&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>3)Рельефное нанесение +заливка краской.&nbsp;</p>
+  <p style='margin: 0px; font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>Цвета</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>&nbsp;</b></span><b>браслета</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>:&nbsp;</span></p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Любые, задаются номером по системе Пантон.&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Возможно сделать браслет состоящий из 2-х или 3-х цветов силикона.&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Браслет может <span style='font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>светиться</span> в темноте (только для синего, желтого, оранжевого и зеленого&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>цветов)&nbsp;</p>
+  <p style='margin: 0px; font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>Макет</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>:&nbsp;</b></span></p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>При необходимости наш дизайнер сделает макет для вас бесплатно.&nbsp; Если вы делаете макет сами,&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>то следует учесть следующее:&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>- необходимы отступы по 1,5 мм от верхнего и нижнего края браслета.&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>-логотипы желательно предоставлять в векторе – форматы .cdr, eps, ai&nbsp;</p>
+  <p style='margin: 0px; font-family: 'Lucida Grande'; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>Сроки</b><span style='font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'><b>:</b>&nbsp;</span></p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>15 раб. дней с момента 50% предоплаты заказа.&nbsp;</p>
+  <p style='margin: 0px; font-family: Tahoma; font-style: normal; font-variant: normal; font-weight: normal; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none;'>Предоставляется санитарно-гигиенический сертификат на браслеты.&nbsp;</p>
+  <p>&nbsp;</p>
+  <div>&nbsp;</div>
+</span>
+</div>
+</div>
+</div>
+"
+
+    Category.create :title => "Слеп-браслеты",
+      :category_collection_id => "1",
+      :position => 1,
+      :content => "<div class='descr'>
+ <img src='/images/0fn0cofnp8ivk50.gif' alt=''> <div class='big_purple'>Слеп-браслеты</div>
+ <span apple-style-span='' style='font-size: medium;'>Слеп-браслет – от английского слова slap – «щелчок», «хлопок». Браслет при легком ударе, закручивается вокруг запястья.
+  
+  <br>Так же как и силиконовые браслеты, слеп-браслеты используются в массовых рекламных мероприятиях, вечеринках и концертах - другими словами везде, где вам нужно донести свой бренд до молодежной аудитории.
+  </span>
+<br>
+<br>
+<br>
+</div>
+<div class='descr'>
+<h2>Технические детали</h2>
+<div class='descr'><span style='font-size: medium;' class='Apple-style-span'>В развернутом виде браслет выглядит как
+закладка или линейка, а при легком ударе о запястье браслет
+закручивается вокруг руки. Это возможно благодаря особым образом
+согнутой стальной пластине, которая находится внутри браслета.
+Размеры: 2,5x23 / 3x23 / 3x 30 / 3x34. Так же возможно
+сделать широкий браслет размером 7х23 в качестве «повязки» на руку.
+Возможно изготовление нестандартной формы.
+Материалы: Внешняя сторона делается из светоотражающей ПВХ-пленки. Цвета лицевой
+стороны - есть 35 стандартных цветов этой пленки (палитру с этими
+цветами можем по запросу выслать по электронной почте).
+Внутренняя сторона браслета (прилегающая к запястью) делается из черногосерого бархатного материала. 
+Возможны другие материалы – кожа, силикон, ткань, полиэстр.
+  <br>Нанесение:</span><span style='font-size: medium;' class='Apple-style-span'> шелкография в 1-3 цвета офсетная печать
+  <br><span style='font-weight: bold;'>Минимальный заказ:</span> 300 штук
+Сигнальный образец:</span><span style='font-size: medium;' class='Apple-style-span'> 3 дня, от 40 usd (утверждение образца по фото)
+  <br>
+  <br></span><span style='font-weight: bold;'><span style='font-size: medium;' class='Apple-style-span'>Срок исполнения:</span></span><span style='font-size: small;' class='Apple-style-span'><span style='font-size: medium;'><span style='font-size: medium;'> 20 рабочих дней
+    </span></span>
+
+  <br></span>
+<br></div>
+</div>
+"
+
+    Category.create :title => "Виниловые контрольные браслеты",
+      :category_collection_id => "1",
+      :position => 2,
+      :content => "<div class='descr'>
+ <img src='/images/1x5uuksl45502zn.jpg' alt=''> <div class='big_purple'>Виниловые контрольные браслеты</div>
+ <span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>Контрольные браслеты - это фактически билеты. Они предназначены для учета посетителей &nbsp;учреждений с ограниченным или платным входом. Это могут быть зоопарки, парки отдыха, концерты и музыкальные фестивали,&nbsp;аквапарки,&nbsp;парки аттракционов, музеи, выставки, клубы, казино, дискотеки, бассейны, сауны, медицинские учреждения. Браслет сделан из винила, который не боится повышенной влажности и различных температур. Браслетам могут выдержать серьезные нагрузки на разрыв и устойчивы к случайным повреждениям в процессе их использования. У нас всегда на складе браслеты разных цветов, на которые можно нанести ваш логотип.</span>
+<br>
+</div>	
+
+<div class='descr'>
+
+<h2>Технические детали</h2>
+<div class='descr'><span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>Устойчивые к растяжению виниловые контрольные браслеты со специальной пластиковой застежкой, которая разрушаюется при попытке снять браслет. Они идеально подходят для мероприятий с несколькими клиентскими зонами, например, ночной клуб с несколькими танцполами. Есть широкая полоска для нанесения изображения или текста. &nbsp;Легкий и удобный, он подходит даже для самой чувствительной кожи. Располагается на руке или ноге посетителя в зоне свободной видимости контролера. При попытке снятия браслета происходит его разрушение в месте соединения, вследствие чего браслет не может быть использован повторно.</span>&nbsp;
+<div><span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>
+    <br></span>
+</div>
+<div><span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>Размер: 19мм х 55 мм</span>
+  <div><span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>Узнайте, какие цвета есть на складе сейчас: (495)9781543&nbsp;</span>
+  </div>
+  <div><span style='color: rgb(49, 7, 2); font-family: 'Comic Sans MS'; font-size: 14px;' class='Apple-style-span'>Делаем нанесение вашего логотипа шелкографией (2-3 дня)</span>
+  </div>
+
+</div></div>
+</div>
+"
+
+    Category.create :title => "Вязаные напульсники",
+      :category_collection_id => "1",
+      :position => 3,
+      :content => "<div class='descr'>
+ <img src='http://promist.ru/catalog/4tcceddoxy11i7z.gif' alt=''> <div class='big_purple'>Вязаные напульсники</div>
+ <span style='font-size: medium;' class='Apple-style-span'>Вязаные напульсники с нанесением логотипа&nbsp; вышивкой – изначально спортивный аксессуар, ставший модным среди молодежи.
+  <br>Основные заказчики : спортивные клубы, футбольные и баскетбольные команды.</span>
+</div>
+<div class='descr'>
+<h2>Технические детали</h2>
+<div class='descr'><span><span style='font-size: medium;' class='Apple-style-span'>Хлопковые вязанные напульсники с возможностью нанесениея вышивкой (1-2 цвета)
+    <br>Возможно производство сигнального образца (100 долларов, 10 дней)</span></span><span style='font-size: medium;' class='Apple-style-span'>
+  <br>
+  <br>Размер 8х8 см.
+  <br>Материал -&nbsp; 75% хлопок, 10% нейлон, 15% эластан
+  <br>или 100% хлопок
+  <br>минимальный заказ 1000 штук
+  <br>упаковка – каждый напульсник упакован в индивидуальный пластиковый пакет,
+  <br>возможна подарочная упаковка с лого заказчика
+  <br>500 штук в коробке 45х40х38 см (11 кг)</span>
+<br>
+<br></div>
+</div>"
+
+    Category.create :title => "Магниты",
+      :category_collection_id => "1",
+      :position => 4
+      
+    Category.create :title => "Брелки",
+      :category_collection_id => "1",
+      :position => 5
+
+    Category.create :title => "Силиконовый чехол для iphone",
+      :category_collection_id => "2",
+      :position => 0,
+      :content => "Защитный чехол из силикона для Iphone
+Заказ от 50 штук."
+    
+    Category.create :title => "Виниловые игрушки, 8 см",
+      :category_collection_id => "2",
+      :position => 1,
+      :content => "<div class='descr'>
+ <img src='/images/a7kzzdz0gq28yti.jpg' alt=''> <div class='big_purple'>Виниловые игрушки, 8 см</div>
+ <span style='font-size: medium;'>Брелок из винила, размер 8 см.
+  <br>Крепится на сумку пластиковым карабином.
+  <br>Продажа от 100 штук,
+  <br>цена 75 рублей за штуку.
+  <br></span>
+<br>
+</div>	
+
+<div class='descr'>
+
+<h2>Технические детали</h2>
+<div class='descr'><br></div>
+</div>
+"
+
+    Category.create :title => "Виниловые игрушки, 6 см",
+      :category_collection_id => "2",
+      :position => 2,
+      :content => "<div class='descr'>
+ <img src='/images/wvmli1fmdcwaj7k.jpg' alt=''> <div class='big_purple'>Виниловые игрушки, 6 см</div>
+ <span style='font-size: medium;'>Брелок на мобильный телефон на шнурке.
+  <br>Возможно до 100 видов росписи одной формы.
+  <br>Продажа от 100 штук, цена 65 руб/шт.
+  <br>Каждый брелок упакован в полиэтиленовый пакет,
+  <br>возможно брендирование упаковки.
+  <br>
+  <br>
+  <br></span>
+<br>
+</div>
+<div class='descr'>
+<h2>Технические детали</h2>
+<div class='descr'><br></div>
+</div>
+"
+  end
+
+  def self.down
+    drop_table :categories
+    drop_table :category_collections
+  end
+end

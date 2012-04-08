@@ -1,0 +1,7 @@
+<% fields_for "item[new_main_image_attributes][]", new_main_image do |main_image_form| %>
+  <p>
+    <%= main_image_form.label :title, "Заголовок:" %>
+    <%= main_image_form.text_field :title %>
+  </p>
+  <%= main_image_form.file_field :uploaded_data %>
+<% end %>

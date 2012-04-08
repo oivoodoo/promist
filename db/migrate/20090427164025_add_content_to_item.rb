@@ -1,0 +1,11 @@
+class AddContentToItem < ActiveRecord::Migration
+  def self.up
+    add_column :items, :bottom_content, :text
+    add_column :photos, :title, :string
+  end
+
+  def self.down
+    remove_column :items, :bottom_content
+    remove_column :photos, :title
+  end
+end

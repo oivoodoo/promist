@@ -1,0 +1,11 @@
+class ApplicationController < ActionController::Base
+  helper :all
+  protect_from_forgery
+  
+  before_filter :get_banners
+  
+  def get_banners
+    @footer_banners ||= Banner.find(:all, :order => "created_at")
+    true
+  end
+end

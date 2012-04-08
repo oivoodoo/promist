@@ -1,0 +1,13 @@
+<% content_for :top_menu do %>
+  <%= link_to "Добавить для рекламы", 
+    :controller => :main_items, 
+    :action => :new, 
+    :type => "advertisement" %><br />
+  <%= link_to "Добавить для продажи", 
+    :controller => :main_items, 
+    :action => :new,
+    :type => "seller" %><br />
+  <%= link_to 'Назад', :controller => :items, :action => :index %>
+<% end %>
+
+<%= render :partial => "main_items/templates/local_item" %>

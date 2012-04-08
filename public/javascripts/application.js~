@@ -1,0 +1,13 @@
+function mark_for_destroy_id(element, className) {
+        $(element).next('.should_destroy').value = 1;
+        $(element).next('.should_destroy').up("." + className).hide();
+}
+
+function draw_articles_table(request) {
+  alert('hello');
+  var articles = request.responseText.evalJSON();
+  $('container').innerHTML = ' ';
+  articles.each(function(article, index){
+    alert(article);
+  });
+}

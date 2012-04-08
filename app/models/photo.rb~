@@ -1,0 +1,17 @@
+class Photo < ActiveRecord::Base
+  has_attachment :content_type => ['image/jpeg', :image],
+                 :processor    => :rmagick,
+                 :thumbnails   => {
+                    :medium => [200, 200],
+                    :thumb => [64, 64]
+                 }
+
+  belongs_to :page
+  belongs_to :item
+
+  attr_accessor :should_destroy
+
+  def should_destroy?
+    should_destroy.to_i == 1
+  end
+end

@@ -1,0 +1,37 @@
+<tr>
+  <td width="125">
+    <%= image_tag('cms_images/apply.gif', :align => "absmiddle", :border => 0) %>
+    <%= link_to short_library.updated_at.strftime('%D %H:%m'), short_library %>
+  </td>
+  <td width="10">
+    <%= link_to_remote "#{image_tag('cms_images/ico_up.gif', :border => 0)}", 
+      :url => {
+        :controller => :library_articles,
+        :action => :up_item,
+        :id => short_library.id
+      },
+      :update => short_library.category.title,
+      :failure => "alert('HTTP Error ' + request.status + '!');" %>
+    <br/>
+    <%= link_to_remote "#{image_tag('cms_images/ico_down.gif', :border => 0)}", 
+      :url => {
+        :controller => :library_articles,
+        :action => :down_item,
+        :id => short_library.id,
+      },
+      :update => short_library.category.title,
+      :failure => "alert('HTTP Error ' + request.status + '!');" %>
+  </td>
+  <td width="35%"><%= short_library.title %></td>
+  <td><%= short_library.category.title %></td>
+  <td>
+    <%= link_to "Показать", short_library %>
+  </td>
+  <td>
+    <%= link_to "Редактировать", edit_library_article_path(short_library) %>
+  <td>
+  <td>
+    <%= link_to "Удалить", short_library, :confirm => "Вы действительно хотите удалить?", :method => :delete %>
+  </td>
+</tr>
+

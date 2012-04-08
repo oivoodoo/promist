@@ -1,0 +1,41 @@
+<h1 style="font-size: 26px; color: #0066cc"><%= @title_page %></h1>
+<% i = 0 %>
+<% if @items.size > 1 %>
+<table colspacing="10">
+  <tbody>
+      <% for item in @items %>
+        <% if i == 0 %>
+          <tr>
+        <% end %>
+        <td style="margin-right: 15px;">
+          <center>
+          <% if not item.main_photo.nil? %>
+          <%= link_to "#{fu_image_tag(item.main_photo, {:action => :get_photo, :type => :medium})}", 
+              :controller => :main,
+              :action => :item,
+              :id => item.id %>
+          </center>
+          <center>
+            <a href="<%= url_for :controller => :main,
+              :action => :item,
+              :id => item.id %>" class="bottom_title"><%= item.main_photo.title %></a>
+          </center>
+          <% else %>
+            картинка не найдена
+          <% end %>
+        </td>
+         <% if i == 2 %>
+          </tr>
+        <% end %>
+        <% i = -1 if i == 2 %>
+        <% i += 1 %>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<% elsif @items.size == 1 %>
+  <%= render :partial => "main/templates/item", :object => @items[0] %>
+<% else %>
+  Каталог пуст.
+<% end %>
+

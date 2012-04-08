@@ -1,0 +1,36 @@
+<h1 style="font-size: 26px; color: #0066cc"><%= @title_page %></h1>
+<% i = 0 %>
+<table>
+  <tbody>
+      <% for item in @items %>
+      <tr>
+        <td>
+          <% if not item.main_photo.nil? and not item.main_photo.blank?%>
+          <%= link_to "#{fu_image_tag(item.main_photo, {:action => :get_photo, :type => :medium})}", 
+              :controller => :main,
+              :action => :item,
+              :id => item.id %>
+          <p>
+            <center>
+              <%= link_to item.main_photo.title, :controller => :main,
+                :action => :item,
+                :id => item.id %>
+            </center>
+          </p>
+          <% else %>
+            картинка не найдена
+          <% end %>
+        </td>
+        <td>
+          <%= item.title %>
+        </td>
+        <td>
+          <%= link_to 'Удалить', :controller => :main_items, :action => :destroy, :id => item.id %>
+        </td>
+        <% i = 0 if i == 3 %>
+        <% i += 1 %>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,5 @@
+<% fields_for "library_categories[library_category][][articles_attributes][]", main_article, :index => nil do |form| %>
+  <tr><td><%= main_article.title %></td><td<%= form.check_box :is_checked %><%= form.hidden_field :id %></td></tr>
+<% end %>
+
+

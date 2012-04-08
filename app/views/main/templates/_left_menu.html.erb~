@@ -1,0 +1,20 @@
+<% style_class1 = "top"; style_p1 = "purple" %>
+<% style_class2 = "top"; style_p2 = "purple" %>
+<% if not @type.nil? %>
+  <% if @type == 'advertisement' %>
+      <% style_class1 = "top_selected"; style_p1 = "" %>
+  <% else %>
+      <% style_class2 = "top_selected"; style_p2 = "" %>
+  <% end %>
+<% end %>
+
+<div class="left_column">
+ <div class="menu_left">
+     <span><a class="<%= style_class1 %>" href="<%= url_for(:controller => :main, :action => :products, :type => 'advertisement') %>">для <span class="<%= style_p1 %>">рекламы</span></a></span>
+     <%= render :partial => 'templates/item_link', :collection => @advertisement %>
+ </div>
+ <div class="menu_left">
+    <span><a class="<%= style_class2 %>" href="<%= url_for(:controller => :main, :action => :products, :type => 'advertisement') %>">для <span class="<%= style_p2 %>">торговли</span></a></span>
+    <%= render :partial => 'templates/item_link', :collection => @seller %>
+ </div>	
+</div>

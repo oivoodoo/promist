@@ -1,0 +1,22 @@
+<% content_for :top_menu do %>
+  <%= render :partial => "library_articles/templates/top_menu" %>
+  <%= link_to "Назад", :controller => :admin, :action => :index %>
+<% end %>
+<% for category in @categories %>
+  <% if category.articles.size > 0%>
+    <% form_tag '/articles/do_add_to_main_page' do -%>
+      <% fields_for :library_category, category do |form| %>
+        <table>
+          <caption>
+            <%= category.title %>
+          </caption>
+          <tbody>
+            <%= render :partial => 'library_articles/templates/main_article', :collection => category.articles %>
+          </tbody>
+        </table>
+        <%= hidden_field_tag "library_category[id]", category.id %>
+        <% end %>
+        <%= submit_tag "Обновить" %>
+    <% end %>
+  <% end %>
+<% end -%>

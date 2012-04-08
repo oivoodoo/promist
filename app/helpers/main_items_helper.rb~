@@ -1,0 +1,8 @@
+require 'application_constants'
+
+module MainItemsHelper
+  include ApplicationConstants
+
+  def get_type_collection(collection.category_collection_type)
+  end
+end
