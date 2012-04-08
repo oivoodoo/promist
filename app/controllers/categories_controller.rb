@@ -1,6 +1,6 @@
 class CategoriesController < AdminController
-  uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
-  
+  uses_tiny_mce
+
   def show
     @category = Category.find(params[:id])
 
@@ -13,7 +13,7 @@ class CategoriesController < AdminController
   def new
     @category = Category.new
     @category_collections = CategoryCollection.find(:all, :select => "id, title")
-    
+
     respond_to do |format|
       format.html
       format.xml  { render :xml => @category }
@@ -29,7 +29,7 @@ class CategoriesController < AdminController
     @category = Category.new(params[:category])
     @category.position = @category.category_collection.categories.size unless @category.category_collection.categories.nil?
     @category_collections = CategoryCollection.find(:all, :select => "id, title")
-    
+
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Категория успешно добалена.'
@@ -45,7 +45,7 @@ class CategoriesController < AdminController
   def update
     @category = Category.find(params[:id])
     @category_collections = CategoryCollection.find(:all, :select => "id, title")
-    
+
     respond_to do |format|
       if @category.update_attributes(params[:category])
         flash[:notice] = 'Категория успешно обновлена.'

@@ -1,5 +1,6 @@
 class ItemsController < AdminController
-  uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
+  uses_tiny_mce
+
   # GET /items
   # GET /items.xml
   def index
@@ -28,7 +29,7 @@ class ItemsController < AdminController
     @item = Item.new
     @categories = Category.all
     @libraries = LibraryArticle.find(:all)
-    
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @item }
@@ -69,7 +70,7 @@ class ItemsController < AdminController
     @item = Item.find(params[:id])
     @categories = Category.all
     @libraries = LibraryArticle.find(:all)
-    
+
     respond_to do |format|
       if @item.update_attributes(params[:item])
         flash[:notice] = 'Item was successfully updated.'
