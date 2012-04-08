@@ -11,7 +11,7 @@ preload_app true
 timeout 30
 
 # Listen on a Unix data socket
-listen '/data/github/current/tmp/sockets/unicorn.sock', :backlog => 2048
+listen '/home/rails/promist.ru/shared/tmp/sockets/unicorn.sock', :backlog => 2048
 
 ##
 # REE

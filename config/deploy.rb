@@ -1,5 +1,3 @@
-require 'capistrano-unicorn'
-
 set :application, "promist.ru"
 set :repository,  "git@github.com:oivoodoo/promist.git"
 set :user, "rails"
@@ -9,3 +7,6 @@ role :web, "176.58.96.250"
 
 default_run_options[:pty] = true
 set :deploy_to, "~/promist.ru/"
+
+require 'capistrano-unicorn'
+
