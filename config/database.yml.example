@@ -1,0 +1,7 @@
+development:
+  adapter: mysql
+  timeout: 5000
+  username: root
+  password: 123456
+  database: promist_development
+  encoding: utf8
