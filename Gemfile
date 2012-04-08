@@ -6,6 +6,9 @@ gem 'unicorn'
 gem 'tiny_mce'
 gem 'will_paginate'
 gem 'paperclip'
-gem 'capistrano'
-gem 'capistrano-ext'
 
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'capistrano-unicorn'
+end
