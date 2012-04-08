@@ -1,0 +1,17 @@
+
+html /* CSS Document */
+ * {
+	margin:0px;
+	padding:0px;
+	font-family: Tahoma, Verdana, Arial;
+}
+.dropdown_point {
+
+}
+
+.dropdown_point p {
+
+}
+
+
+h3, h3 a { font-weight:bold;}

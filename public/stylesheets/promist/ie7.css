@@ -1,0 +1,40 @@
+html /* CSS Document */
+ * {
+	margin:0px;
+	padding:0px;
+  font-family: Arial, Tahoma, Verdana;
+}
+
+#main{zoom : 1;}
+.logo {margin-right:0px !important;}
+#head .menu_top span {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+#head .menu_top li {margin-right:8px !important; 
+margin-left:0px !important;}
+#head .menu_top li.last {margin-right:0px !important;}
+.image_pointer {
+ position:static !important;
+}
+.menu_left ul {
+ margin-left: -30px;
+}
+.main_page tbody tr td a, .bottom_title {
+  color:#939393 !important;
+  font-size:14px !important;
+  text-decoration: none !important;
+}
+.purple_button {
+color: #eb008c !important;
+font-size: 18px !important;
+text-decoration: underline !important;
+}
+.blue_button {
+color: #246CD2 !important;
+font-size: 18px !important;
+text-decoration: underline !important;
+}
+.main_content{
+margin-bottom:15px
+}
