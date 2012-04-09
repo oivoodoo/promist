@@ -6,7 +6,8 @@
     <%= stylesheet_link_tag 'cms_style' %>
     <%= javascript_include_tag "jquery-1.6.2.min" %>
     <%= yield :header %>
-    <%= include_tiny_mce_if_needed %>
+    <%= javascript_include_tiny_mce_if_used %> 
+    <%= tiny_mce if using_tiny_mce? %>
   </head>
   <body>
     <table cellspacing=0 cellpadding=2 border=0 width=100% height=100%>
