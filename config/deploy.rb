@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :application, "promist.ru"
 set :repository,  "git@github.com:oivoodoo/promist.git"
 set :user, "rails"
